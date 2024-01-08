@@ -3962,7 +3962,8 @@ public class DefaultCodegen implements CodegenConfig {
 
         Schema original = null;
         // check if it's allOf (only 1 sub schema) with or without default/nullable/etc set in the top level
-        if (ModelUtils.isAllOf(p) && p.getAllOf().size() == 1) {
+        if (ModelUtils.isAllOf(p) && p.getAllOf().size() == 1 &&
+                p.getType() == null && p.getTypes() == null) {
             if (p.getAllOf().get(0) instanceof Schema) {
                 original = p;
                 p = (Schema) p.getAllOf().get(0);
