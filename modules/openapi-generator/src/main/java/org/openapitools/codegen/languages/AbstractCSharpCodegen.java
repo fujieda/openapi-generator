@@ -1312,10 +1312,7 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
 
     @Override
     public String escapeReservedWord(String name) {
-        if (reservedWords().contains(name) ||
-                reservedWords().contains(name.toLowerCase(Locale.ROOT)) ||
-                reservedWords().contains(camelize(sanitizeName(name))) ||
-                isReservedWord(name) ||
+        if (isReservedWord(name) ||
                 name.matches("^\\d.*")) {
             name = this.invalidNamePrefix + camelize(name);
         }
